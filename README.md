@@ -26,7 +26,7 @@ Construir um fluxo automatizado capaz de:
 ## Estrutura do projeto
 
 ```text
-📦 projeto-etl-compras-publicas
+📦 etl-govern-data-pipeline
 ├── 📁 data
 │   ├── 📁 raw            → planilhas originais (entrada)
 │   └── 📁 processed      → dados limpos e padronizados
