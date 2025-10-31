@@ -3,7 +3,6 @@
 Este projeto simula um pipeline corporativo de tratamento e integração de dados (*ETL — Extract, Transform, Load*) aplicado a planilhas de **compras públicas**.  
 Ele foi desenvolvido com o objetivo de demonstrar, de forma prática e didática, como automatizar o fluxo de dados em um ambiente similar ao corporativo, desde a coleta até a visualização em dashboards.
 
----
 
 ## Objetivo
 
@@ -13,7 +12,6 @@ Construir um fluxo automatizado capaz de:
 3. Armazenar os dados em um banco PostgreSQL;
 4. Disponibilizar os resultados para análise e visualização no Power BI.
 
----
 
 ## Tecnologias utilizadas
 
@@ -24,13 +22,31 @@ Construir um fluxo automatizado capaz de:
 - **Power BI** — camada de visualização e análise  
 - **dotenv** — gerenciamento de variáveis de ambiente  
 
----
 
 ## Estrutura do projeto
-<pre> ```text 📦 projeto-etl-compras-publicas ├── 📁 data │ ├── 📁 raw → planilhas originais (entrada) │ └── 📁 processed → dados limpos e padronizados │ ├── 📁 etl │ ├── extract.js → código de extração dos arquivos Excel │ ├── transform.js → código de limpeza e padronização │ └── load.js → código de inserção no banco │ ├── 📁 db │ └── schema.sql → script SQL de criação das tabelas │ ├── 📁 docs │ └── arquitetura.md → documentação técnica do fluxo │ ├── .env.example → variáveis de ambiente (ex: credenciais do banco) ├── package.json → metadados e dependências do projeto └── README.md → guia principal do repositório ``` </pre>
 
+```text
+📦 projeto-etl-compras-publicas
+├── 📁 data
+│   ├── 📁 raw            → planilhas originais (entrada)
+│   └── 📁 processed      → dados limpos e padronizados
+│
+├── 📁 etl
+│   ├── extract.js        → código de extração dos arquivos Excel
+│   ├── transform.js      → código de limpeza e padronização
+│   └── load.js           → código de inserção no banco
+│
+├── 📁 db
+│   └── schema.sql        → script SQL de criação das tabelas
+│
+├── 📁 docs
+│   └── arquitetura.md    → documentação técnica do fluxo
+│
+├── .env.example          → variáveis de ambiente (ex: credenciais do banco)
+├── package.json          → metadados e dependências do projeto
+└── README.md             → guia principal do repositório
+```
 
----
 
 ## Aprendizados deste projeto
 
@@ -42,7 +58,6 @@ Durante o desenvolvimento deste projeto no meu estágio junto ao Ministério da 
 - Preparar dados para visualização em ferramentas de BI;
 - Documentar um pipeline de dados completo para uso no meu portfólio técnico.
 
----
 
 ## Como executar
 
@@ -61,7 +76,6 @@ Durante o desenvolvimento deste projeto no meu estágio junto ao Ministério da 
    ```bash
    node etl/extract.js
 
----
 
 ## Status do projeto
 
@@ -71,5 +85,3 @@ Próximo módulo: Transformação e Padronização dos Dados
 ## Licença
 
 Este projeto é de uso livre para fins educacionais e faz parte de um estudo independente de automação de processos de dados corporativos.
-
----
