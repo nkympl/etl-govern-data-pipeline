@@ -27,25 +27,7 @@ Construir um fluxo automatizado capaz de:
 ---
 
 ## Estrutura do projeto
-📦 etl-govern-data-pipeline
-├── 📁 data
-│ ├── 📁 raw → planilhas originais (entrada)
-│ └── 📁 processed → dados limpos e padronizados
-│
-├── 📁 etl
-│ ├── extract.js → extração dos arquivos Excel
-│ ├── transform.js → limpeza e padronização
-│ └── load.js → carga no PostgreSQL
-│
-├── 📁 db
-│ └── schema.sql → criação das tabelas
-│
-├── 📁 docs
-│ └── arquitetura.md → documentação técnica
-│
-├── .env.example → variáveis de ambiente (exemplo)
-├── package.json → dependências e scripts do projeto
-└── README.md → guia principal
+<pre> ```text 📦 projeto-etl-compras-publicas ├── 📁 data │ ├── 📁 raw → planilhas originais (entrada) │ └── 📁 processed → dados limpos e padronizados │ ├── 📁 etl │ ├── extract.js → código de extração dos arquivos Excel │ ├── transform.js → código de limpeza e padronização │ └── load.js → código de inserção no banco │ ├── 📁 db │ └── schema.sql → script SQL de criação das tabelas │ ├── 📁 docs │ └── arquitetura.md → documentação técnica do fluxo │ ├── .env.example → variáveis de ambiente (ex: credenciais do banco) ├── package.json → metadados e dependências do projeto └── README.md → guia principal do repositório ``` </pre>
 
 
 ---
