@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "lint:check": "prettier --check .",
-    "lint:fix": "prettier --write ."
+    "lint:fix": "prettier --write .",
+    "dev": "next dev",
+    "etl": "node run-etl.js"
   },
   "keywords": [],
   "author": "",
