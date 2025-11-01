@@ -5,7 +5,7 @@ const path = require("path");
 const inputPath = path.join(__dirname, "../data/raw/compras_sp.json");
 const rawData = fs.readFileSync(inputPath, "utf8");
 const data = JSON.parse(rawData);
-console.log(`Dados lidos com sucesso: " ${data.length} registros`);
+console.log(`Dados lidos com sucesso: ${data.length} registros`);
 
 function normalizeData(data) {
   // criar um novo array para guardar os dados limpos
@@ -29,16 +29,9 @@ function normalizeData(data) {
       novoItem[novaChave] = item[chave];
     }
 
-    // calcular valor_total
-    const quantidade = Number(novoItem.quantidade);
-    const valorUnitario = Number(novoItem.valor_unitario);
-
-    //caso consiga calcular, adiciona o valor_total
-    if (!isNaN(quantidade) && !isNaN(valorUnitario)) {
-      novoItem.valor_total = quantidade * valorUnitario;
-    } else {
-      novoItem.valor_total = 0; //caso falte algum dado
-    }
+    // garantir que quantidade e valor_unitario sejam númeos
+    novoItem.quantidade = Number(novoItem.quantidade);
+    novoItem.valor_unitario = Number(novoItem.valor_unitario);
 
     // adiciona o objeto limpo na nova lista
     normalizeList.push(novoItem);
