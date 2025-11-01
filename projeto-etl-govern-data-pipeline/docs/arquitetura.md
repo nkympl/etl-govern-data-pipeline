@@ -72,6 +72,31 @@ PROCESSED_DATA_PATH=./data/processed
 NODE_ENV=development
 ```
 
+### Observação sobre o ambiente de desenvolvimento
+
+Este projeto foi criado e executado em ambiente **GitHub Codespaces**, e o banco de dados PostgreSQL roda em um contêiner Docker separado.  
+Essa abordagem simula a estrutura de deploy em microserviços, onde o backend e o banco residem em contêineres distintos, comunicando-se via rede interna.
+
+**Configuração Docker usada:**
+
+```bash
+docker run --name postgres -e POSTGRES_PASSWORD=123456 -p 5432:5432 -d postgres
+```
+
+### Nota sobre comunicação Node ↔ PostgreSQL no Codespaces
+
+Durante os testes de conexão, verifiquei que o Codespaces executa o Node.js diretamente no ambiente base,
+enquanto o PostgreSQL roda em um container Docker separado.
+
+Isso significa que a comunicação entre o Node e o banco **ocorre via porta publicada no host (localhost)**, e não pela rede Docker interna.
+
+**Configuração final adotada no .env:**
+
+```bash
+DB_HOST=localhost
+DB_PORT=5432
+```
+
 ## Módulo 2 - Extração dos Dados (E)
 
 ### Objetivo
