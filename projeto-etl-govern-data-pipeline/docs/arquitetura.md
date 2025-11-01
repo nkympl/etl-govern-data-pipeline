@@ -1,10 +1,10 @@
-# Arquitetura do Projeto — ETL govern data pipeline
+# Arquitetura do Projeto - ETL govern data pipeline
 
 Este documento descreve a arquitetura técnica e o fluxo de dados do projeto **ETL govern data pipeline**, uma simulação do projeto de pipeline corporativo do qual fiz parte durante meu estágio no Ministério da Justiça e Segurança Pública para tratamento e integração de dados de compras públicas utilizando Node.js, JSON, PostgreSQL e Power BI.
 
 ---
 
-## Módulo 1 — Estrutura Inicial do Projeto
+## Módulo 1 - Estrutura Inicial do Projeto
 
 ### Objetivo
 
@@ -48,7 +48,7 @@ O projeto é estruturado para refletir as etapas clássicas de um pipeline ETL (
 
 Ambiente inicial funcional com estrutura modular e dependências configuradas.
 
-## Módulo 1.5 — Configuração de Ambiente
+## Módulo 1.5 - Configuração de Ambiente
 
 ### Objetivo
 
@@ -60,7 +60,7 @@ Definir variáveis de ambiente que parametrizam a execução do pipeline sem exp
 # Configurações do Banco de Dados PostgreSQL
 DB_HOST=localhost
 DB_PORT=5432
-DB_NAME=etl_compras
+DB_NAME=etl_govern_data_pipeline
 DB_USER=postgres
 DB_PASSWORD=senha_segura
 
@@ -80,15 +80,15 @@ Ler planilhas Excel contendo dados de compras públicas e converter seu conteúd
 
 ### Descrição
 
-A etapa de Extração (Extract) coleta dados brutos das fontes originais — neste caso, arquivos Excel localizados em `data/raw/`.
+A etapa de Extração (Extract) coleta dados brutos das fontes originais, neste caso, arquivos Excel localizados em `data/raw/`.
 O script `etl/extract.js` lê cada planilha, seleciona a primeira aba e transforma as linhas em um array de objetos JavaScript.
 
 ### Ferramentas e métodos
 
 - Biblioteca `xlsx`
 - Funções principais:
-  - `readFile()` — carrega a planilha;
-  - `sheet_to_json()` — converte a aba em JSON.
+  - `readFile()` - carrega a planilha;
+  - `sheet_to_json()` - converte a aba em JSON.
 
 ### Fluxo lógico
 
@@ -110,3 +110,27 @@ Responsável por:
 
 **Entrada:** planilhas Excel convertidas em JSON.  
 **Saída:** arquivos JSON padronizados em `/data/processed`.
+
+## Módulo 4 - Criação e Conexão com o Banco de Dados (L - Parte 1)
+
+### Objetivo
+
+Estabelecer a camada de persistência do pipeline ETL utilizando PostgreSQL, definindo o schema e testando a conexão com o Node.js.
+
+### Estrutura criada
+
+Arquivo `db/schema.sql` com definição da tabela `compras_publicas`:
+
+- **id:** chave primária sequencial;
+- **uf, orgao, item:** campos de identificação e descrição;
+- **quantidade, valor_unitario:** campos numéricos com validação;
+- **valor_total:** coluna gerada automaticamente pelo banco;
+- **data_insercao:** registro de data e hora de inserção.
+
+### Conexão
+
+Arquivo `db/connection.js` implementa a integração Node ↔ PostgreSQL usando o módulo `pg` e variáveis de ambiente definidas em `.env`.
+
+### Resultado esperado
+
+Execução do script confirma a conexão com o banco exibindo:
