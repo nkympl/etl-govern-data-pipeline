@@ -50,6 +50,7 @@ function buildQueryBatch(batch) {
   const placeholders = [];
   let count = 1;
 
+  // montar os placeholders e valores
   for (const row of batch) {
     const rowPlaceholders = [];
     for (let i = 0; i < columns.length; i++) {
@@ -59,9 +60,14 @@ function buildQueryBatch(batch) {
     placeholders.push(`(${rowPlaceholders.join(", ")})`);
   }
 
+  // query sql: insere ou atualiza se o registro já existir
   const queryText = `INSERT INTO compras_publicas (${columns.join(", ")})
-                     VALUES ${placeholders.join(", ")};
-                     ON CONFLICT (uf, orgao, item) DO NOTHING`;
+                     VALUES ${placeholders.join(", ")}
+                     ON CONFLICT (uf, orgao, item)
+                     DO UPDATE SET
+                      quantidade = EXCLUDED.quantidade,
+                      valor_unitario = EXCLUDED.valor_unitario,
+                      data_insercao = CURRENT_TIMESTAMP`;
   return { text: queryText, values };
 }
 
