@@ -1,0 +1,18 @@
+[
+  {
+    "uf": "SP",
+    "orgao": "PM-SP",
+    "item": "Colete balístico",
+    "quantidade": 20,
+    "valor_unitario": 1350,
+    "valor_total": 27000
+  },
+  {
+    "uf": "SP",
+    "orgao": "PC-SP",
+    "item": "Lanternas",
+    "quantidade": 50,
+    "valor_unitario": 120,
+    "valor_total": 6000
+  }
+]
